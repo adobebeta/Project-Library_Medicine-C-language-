@@ -4,9 +4,9 @@
 #include <ctype.h>
 int main(){
 	int c;
-	char customer[100]; //อาการที่ลูกค้าเป็น
-	char arkarn[100];
-	char roke[100];
+	char customer[1000]; //อาการที่ลูกค้าเป็น
+	char arkarn[1000];
+	char roke[1000];
 	printf("ใส่อาการที่พบ : ");
 	scanf("%s", customer);
 	FILE *file; //ประกาศตัวแปลไฟล์
@@ -30,5 +30,22 @@ int main(){
    		printf("Could not open file"); //ไม่เจอไฟล์
    	}
    	fclose(file);
+
+   	char search[1000];
+   	char original[5] = ".txt";
+
+   	printf("กรุณาใส่ชื่อโรคที่ต้องการหาข้อมูลเพิ่มเติม : ");
+   	scanf("%s" , search);
+   	strcat(search, original);
+
+   	FILE *find; //ประกาศตัวแปลไฟล์
+   	find = fopen( search, "r");
+	if (find) {
+	    while ((c = getc(find)) != EOF)
+	        putchar(c);
+	    fclose(find);
+	}
+
+
 	return(0);
 }
